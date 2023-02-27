@@ -1,0 +1,7 @@
+---
+
+- name: install php extensions
+  ansible.builtin.apt:
+    name: "{{ php_extensions }}"
+    state: present
+  become: true

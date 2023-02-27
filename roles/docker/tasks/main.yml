@@ -1,0 +1,7 @@
+---
+
+- name: import tasks to docker
+  include_tasks: "{{ item }}"
+  loop:
+    - install_packages.yml
+    - install_docker.yml

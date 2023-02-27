@@ -1,0 +1,9 @@
+---
+
+# packages required
+packages:
+  - docker
+
+# docker
+docker_apt_key: https://download.docker.com/linux/ubuntu/gpg
+docker_repository: deb https://download.docker.com/linux/ubuntu jammy stable

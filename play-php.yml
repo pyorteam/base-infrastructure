@@ -1,0 +1,7 @@
+---
+
+- name: "Setup php (8.1) for {{ target_hosts }}"
+  hosts: "{{ target_hosts }}"
+  gather_facts: yes
+  roles:
+  - roles/php

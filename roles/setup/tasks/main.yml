@@ -1,0 +1,8 @@
+---
+
+- name: import tasks to setup
+  include_tasks: "{{ item }}"
+  loop:
+    - configure_host.yml
+    - configure_firewall.yml
+    - install_packages.yml

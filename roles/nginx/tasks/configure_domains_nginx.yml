@@ -1,0 +1,23 @@
+---
+
+- name: copy www to remote /var/www/
+  copy:
+    src: templates/www/
+    dest: /var/www/
+    mode: 0755
+    owner: www-data
+    group: www-data
+
+- name: copy nginx config to remote-host
+  ansible.builtin.template:
+    src: "{{ item }}"
+    dest: "/etc/nginx/conf.d/{{ item | basename | regex_replace('\\.j2', '') }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_fileglob:
+    - "templates/conf/*.conf.j2"
+  become: true
+  register: nginx_configuration
+  notify:
+    - restart nginx

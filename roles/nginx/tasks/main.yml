@@ -1,0 +1,8 @@
+---
+
+- name: import tasks to nginx
+  include_tasks: "{{ item }}"
+  loop:
+    - install_packages.yml
+    - configure_domains_nginx.yml
+    - configure_nginx.yml

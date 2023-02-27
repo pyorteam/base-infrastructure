@@ -1,0 +1,35 @@
+# Ansible
+.ansible-lint
+.yamllint
+temp
+hosts
+
+# Group variables
+group_vars/*
+!group_vars/*.example
+
+# Roles
+roles/*
+!roles/docker
+!roles/nginx
+!roles/node
+!roles/php
+!roles/setup
+
+# Playbook files
+/*.yml
+!play-setup.yml
+!play-docker.yml
+!play-node.yml
+!play-nginx.yml
+!play-php.yml
+
+# Nginx configuration
+roles/nginx/templates/agents.rules.j2
+roles/nginx/templates/nginx_main_configuration.conf.j2
+roles/nginx/templates/conf/*
+!roles/nginx/templates/conf/*.example
+
+# Task variables
+roles/*/vars/main/task_vars/*
+!roles/*/vars/main/task_vars/*.example

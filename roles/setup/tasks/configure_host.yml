@@ -1,0 +1,19 @@
+---
+
+- name: set hostname
+  ansible.builtin.hostname:
+    name: "{{ hostname }}"
+    use: systemd
+  become: true
+
+- name: add ntp servers
+  ansible.builtin.lineinfile:
+    path: /etc/systemd/timesyncd.conf
+    regexp: '^#NTP='
+    line: NTP={{ ntp_server0 }} {{ ntp_server1 }} {{ ntp_server2 }} {{ ntp_server3 }}
+    mode: '0644'
+  become: true
+  become_user: root
+  register: ntp_configuration
+  notify:
+    - restart timesyncd

@@ -1,0 +1,21 @@
+---
+
+- name: add docker GPG apt key
+  apt_key:
+    url: "{{ docker_apt_key }}"
+    state: present
+
+- name: add docker repository
+  apt_repository:
+    repo: "{{ docker_repository }}"
+    state: present
+
+- name: update apt and install docker-ce
+  apt:
+    name: docker-ce
+    state: latest
+    update_cache: true
+
+- name: install docker module for python
+  pip:
+    name: docker

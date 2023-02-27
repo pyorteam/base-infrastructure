@@ -1,0 +1,7 @@
+---
+
+- name: import tasks to php
+  include_tasks: "{{ item }}"
+  loop:
+    - install_packages.yml
+    - install_extensions.yml

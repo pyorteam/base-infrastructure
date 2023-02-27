@@ -1,0 +1,7 @@
+---
+
+# packages required
+packages:
+  - nginx
+  - certbot
+  - python3-certbot-nginx

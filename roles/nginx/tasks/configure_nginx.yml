@@ -1,0 +1,39 @@
+---
+
+- name: copy default nginx config to remote-host
+  ansible.builtin.template:
+    src: templates/nginx_main_configuration.conf.j2
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  register: nginx_configuration
+  notify:
+    - restart nginx
+
+- name: copy agent block rules for nginx
+  ansible.builtin.template:
+    src: templates/agents.rules.j2
+    dest: /etc/nginx/agents.rules
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+  register: nginx_configuration
+  notify:
+    - restart nginx
+
+- name: create nginx user
+  ansible.builtin.user:
+    name: nginx
+    shell: /bin/false
+    state: present
+  become: true
+
+- name: start and enable nginx
+  ansible.builtin.systemd:
+    name: nginx
+    enabled: true
+    state: restarted
+  become: true

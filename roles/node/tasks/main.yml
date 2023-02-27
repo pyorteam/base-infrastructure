@@ -1,0 +1,8 @@
+---
+
+- name: import tasks to node and yarn
+  include_tasks: "{{ item }}"
+  loop:
+    - install_packages.yml
+    - install_node.yml
+    - install_yarn.yml

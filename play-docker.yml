@@ -1,0 +1,7 @@
+---
+
+- name: "Setup docker for {{ target_hosts }}"
+  hosts: "{{ target_hosts }}"
+  gather_facts: yes
+  roles:
+  - roles/docker

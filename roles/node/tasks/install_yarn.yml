@@ -1,0 +1,17 @@
+---
+
+- name: add yarn GPG apt key
+  apt_key:
+    url: "{{ yarn_apt_key }}"
+    state: present
+
+- name: add yarn repository
+  apt_repository:
+    repo: "{{ yarn_repository }}"
+    state: present
+
+- name: update apt and install yarn
+  apt:
+    name: yarn
+    state: latest
+    update_cache: true

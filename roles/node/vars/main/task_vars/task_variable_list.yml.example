@@ -1,0 +1,13 @@
+---
+
+# packages required
+packages:
+  # - nodejs
+
+# nodejs
+node_apt_key: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+node_repository: deb https://deb.nodesource.com/node_18.x focal main
+
+# yarn
+yarn_apt_key: https://dl.yarnpkg.com/debian/pubkey.gpg
+yarn_repository: deb https://dl.yarnpkg.com/debian/ stable main

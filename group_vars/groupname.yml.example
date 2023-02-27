@@ -1,0 +1,8 @@
+---
+
+ansible_connection: ssh # defined connection type for the remote host
+ansible_python_interpreter: /usr/bin/python3.10 # used python interpreter on the remote machine
+
+ansible_user: 'change-username-root' # user username
+ansible_password: 'change-password' # user password
+ansible_become_password: 'change-root-password' # user password for root privileges
