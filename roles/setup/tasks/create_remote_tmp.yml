@@ -1,0 +1,8 @@
+---
+
+- name: create remote_tmp directory
+  become: true
+  file:
+    path: /root/.ansible/tmp
+    state: directory
+    mode: "0775"

@@ -3,6 +3,7 @@
 - name: import tasks to setup
   include_tasks: "{{ item }}"
   loop:
+    - create_remote_tmp.yml
     - configure_host.yml
     - configure_firewall.yml
     - install_packages.yml
