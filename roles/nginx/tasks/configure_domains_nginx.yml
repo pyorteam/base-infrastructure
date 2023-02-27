@@ -10,13 +10,15 @@
 
 - name: copy nginx config to remote-host
   ansible.builtin.template:
-    src: "{{ item }}"
-    dest: "/etc/nginx/conf.d/{{ item | basename | regex_replace('\\.j2', '') }}"
+    src: "{{ config }}"
+    dest: "/etc/nginx/conf.d/{{ config | basename | regex_replace('\\.j2', '') }}"
     owner: root
     group: root
     mode: 0644
   with_fileglob:
     - "templates/conf/*.conf.j2"
+  loop_control:
+    loop_var: config
   become: true
   register: nginx_configuration
   notify:
