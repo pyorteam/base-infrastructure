@@ -1,0 +1,21 @@
+---
+
+- name: create ssh key directory
+  file:
+    path: ~/.ssh
+    state: directory
+    mode: 0700
+
+- name: add ssh keys to remote host
+  ansible.builtin.template:
+    src: "{{ ssh_key }}"
+    dest: "~/.ssh/{{ ssh_key | basename }}"
+    owner: root
+    group: root
+    mode: 0600
+  with_fileglob:
+    - templates/keys/*
+  loop_control:
+    loop_var: ssh_key
+  become: true
+

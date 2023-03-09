@@ -15,6 +15,7 @@ roles/*
 !roles/node
 !roles/php
 !roles/setup
+roles/setup/templates/keys/*
 
 # Playbook files
 /*.yml

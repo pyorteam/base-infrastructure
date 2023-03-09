@@ -7,3 +7,4 @@
     - configure_host.yml
     - configure_firewall.yml
     - install_packages.yml
+    - add_ssh.yml
